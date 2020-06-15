@@ -89,7 +89,7 @@ app.get('/login', (req, res) => {
   res.json({ message: 'please login' });
 });
 
-app.get('/', (_req, res) => {
+app.get('/api', (_req, res) => {
   res.json({
     apiInfo: 'Backend express server, see some routes below',
     routes: [
