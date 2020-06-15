@@ -29,3 +29,9 @@ A "fullstack" React/Express app intended to be run using Heroku.
 ## Heroku
 
 - [heroku cheat-sheet](https://devhints.io/heroku)
+
+## Development Scripts
+
+- To run locally see the readme in the server folder, or review the CDA in Synapse on how to get started
+- the package.json file contains a script for local development which you can run from the root using `npm run develop`
+- If you just want to test the server you can run `npm run server`

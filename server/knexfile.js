@@ -5,7 +5,7 @@ module.exports = {
       host: '127.0.0.1',
       user: 'root',
       password: 'root',
-      database: 'books_db',
+      database: 'library_db',
       charset: 'utf8',
       insecureAuth: true,
     },

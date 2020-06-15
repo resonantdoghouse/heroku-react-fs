@@ -3,36 +3,71 @@ import axios from 'axios';
 
 class App extends Component {
   state = {
-    data: [],
+    authors: [],
+    books: [],
   };
 
   componentDidMount() {
-    this.getData();
+    this.getAuthors();
+    this.getBooks();
   }
 
-  getData = () => {
+  getAuthors = () => {
     axios
-      .get(`/api`)
+      .get(`/authors`)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         this.setState({
-          data: response.data.routes,
+          authors: response.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  getBooks = () => {
+    axios
+      .get(`/books`)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          books: response.data,
         });
       })
       .catch((err) => console.log(err));
   };
 
   render() {
-    if (this.state.data.length) {
-      return <p>No data to loop through</p>;
-    }
-
     return (
       <div className="App">
-        <h1>React FrontEnd</h1>
-        {this.state.data.map((item) => (
-          <>item</>
-        ))}
+        <h1>React Library</h1>
+        <section>
+          <h2>Authors</h2>
+          <ul>
+            {this.state.authors.length
+              ? this.state.authors.map((author) => (
+                  <li key={author.id}>
+                    <h3>{author.name}</h3>
+                    <p>Author ID: {author.id}</p>
+                  </li>
+                ))
+              : 'no authors found'}
+          </ul>
+        </section>
+        <hr />
+        <section>
+          <h2>Books</h2>
+          <ul>
+            {this.state.books.length
+              ? this.state.books.map((book) => (
+                  <li key={book.id}>
+                    <h3>{book.name}</h3>
+                    <p>{book.description}</p>
+                    <p>Author ID: {book.author_id}</p>
+                  </li>
+                ))
+              : 'no books found'}
+          </ul>
+        </section>
       </div>
     );
   }
