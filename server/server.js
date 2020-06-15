@@ -3,6 +3,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 const PORT = process.env.PORT || 5000;
 
@@ -16,6 +17,9 @@ app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
 // app.use(app.router);
+
+// serve static files, create react app build
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 const Author = require('./models/author');
 
