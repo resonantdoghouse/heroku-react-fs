@@ -108,4 +108,9 @@ app.get('/api', (_req, res) => {
 app.use('/books', booksRoute);
 app.use('/authors', authorsRoute);
 
+// All remaining requests return the React app, so it can handle routing.
+app.get('*', function (_req, res) {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
+
 app.listen(PORT, console.log(`[app]: http://localhost:${PORT}`));
