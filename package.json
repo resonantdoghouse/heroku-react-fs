@@ -1,0 +1,41 @@
+{
+  "name": "fullstack-react",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "cd client/ && npm install && npm run build",
+    "develop": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/server.js",
+    "client": "cd client/ && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resonantdoghouse/heroku-react-fs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "12.16.1"
+  },
+  "dependencies": {
+    "bookshelf": "^1.2.0",
+    "concurrently": "^5.2.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "knex": "^0.21.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
