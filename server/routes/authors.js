@@ -7,7 +7,6 @@ router.route('/').get((req, res) => {
     .fetchAll()
     .then((authors) => {
       const authorsMapped = authors.map((author) => {
-        // console.log(author);
         return {
           id: author.id,
           name: author.attributes.name,

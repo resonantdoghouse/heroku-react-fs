@@ -7,8 +7,8 @@ router.route('/').get((req, res) => {
     .fetchAll({
       withRelated: [
         {
-          authors: function (qb) {
-            qb.column('id', 'name');
+          authors: (qb) => {
+            qb.column('id', 'name'); // filter out what's being returned, e.g. not making emails public
           },
         },
       ],
