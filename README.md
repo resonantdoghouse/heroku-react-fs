@@ -2,9 +2,9 @@
 
 A "fullstack" React/Express app intended to be run using Heroku.
 
-## Install
+## Setup with Heroku
 
-### Initial Steps
+### Initial Steps to install with Heroku
 
 - Create a heroku account and sign in
 - Install heroku-cli [getting-started](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
@@ -26,12 +26,18 @@ A "fullstack" React/Express app intended to be run using Heroku.
 - If the migration works, no errors, then run `knex seed:run`, which should also be run from the server folder however you can check this by running `pwd` first
 - If all went well, fingers crossed, you should now have a MySQL DB running in the cloud ⛅️
 
-## Heroku
+## Setup Local
 
-- [heroku cheat-sheet](https://devhints.io/heroku)
+- In the root folder run `npm run setup` which will run the command `npm install && npm run build` which will install all the required node_modules and export a build of the React app
+- After running the setup you should now be able to start the app by running `npm run develop`, which will start the express app with nodemon and open React using concurrently
 
 ## Development Scripts
 
 - To run locally see the readme in the server folder, or review the CDA in Synapse on how to get started
 - the package.json file contains a script for local development which you can run from the root using `npm run develop`
 - If you just want to test the server you can run `npm run server`
+
+## Additional Resources
+
+- [Heroku CheatSheet](https://devhints.io/heroku)
+- [The Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
