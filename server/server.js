@@ -23,7 +23,7 @@ app.get('/api', (_req, res) => {
       },
       {
         path: '/api/authors',
-        methods: ['GET'],
+        methods: ['GET', 'POST'],
       },
     ],
   });
