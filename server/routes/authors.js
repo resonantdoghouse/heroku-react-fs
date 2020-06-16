@@ -16,4 +16,20 @@ router.route('/').get((req, res) => {
     });
 });
 
+router.route('/').post((req, res) => {
+  const { name, email, bio } = req.body;
+  Author.forge({
+    name,
+    email,
+    bio,
+  })
+    .save()
+    .then((results) => {
+      res.json({ response: results });
+    })
+    .catch((err) => {
+      res.json({ error: err });
+    });
+});
+
 module.exports = router;
