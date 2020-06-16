@@ -11,7 +11,7 @@ exports.up = (knex) => {
       .inTable('authors')
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
-    table.json('categories').notNullable();
+    table.json('categories');
     table.timestamp('updated_at').defaultTo(knex.fn.now());
   });
 };

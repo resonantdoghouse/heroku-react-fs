@@ -7,6 +7,8 @@ exports.up = (knex) => {
     table.increments('id').primary();
     table.string('name').notNullable();
     table.string('email').notNullable();
+    table.integer('age');
+    table.string('bio');
     table.timestamp('updated_at').defaultTo(knex.fn.now());
   });
 };
