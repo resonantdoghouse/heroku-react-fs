@@ -13,6 +13,7 @@ A "fullstack" React/Express app intended to be run using Heroku.
 - Create a Heroku app by running the command `heroku create my-appname` note that `my-appname` would be replaced by your actual app-name. If you get a conflict, e.g. name exists, try choosing a more unique name or add a number at the end
 - Now you can try to deploy your app by running `git push heroku master`
 - If this fails, see the error messages, if there are no useful messages try running the command `heroku logs --tail` to see if there are any errors
+- If there are no errors you can open your app with the command `heroku open`, notice that there are no authors yet as we don't have any data-source
 
 ### Adding and configuring a MySQL database
 
@@ -21,7 +22,7 @@ A "fullstack" React/Express app intended to be run using Heroku.
 - Back in your Heroku Dashboard click on your app and click the `more` dropdown. Then click `Run Console`
 - From there type in `bash` and click `run`
 - This will log you into the server through ssh to be able to run linux/bash commands
-- Here we will run some `knex` scripts to seed the database data
+- Here we will run some knex scripts to seed the database data
 - You will likely be in the root folder so we will need to cd into server first, run `cd server && knex migrate:latest`
 - If the migration works, no errors, then run `knex seed:run`, which should also be run from the server folder however you can check this by running `pwd` first, alternatively you could also run the script in package.json `npm run dbsetup`
 - If all went well, fingers crossed, you should now have a MySQL DB running in the cloud ⛅️
