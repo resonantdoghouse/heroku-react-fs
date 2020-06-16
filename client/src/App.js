@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const API_ROOT = '/api';
+
 class App extends Component {
   state = {
     authors: [],
@@ -14,7 +16,7 @@ class App extends Component {
 
   getAuthors = () => {
     axios
-      .get(`/authors`)
+      .get(`${API_ROOT}/authors`)
       .then((response) => {
         console.log(response.data);
         this.setState({
@@ -26,7 +28,7 @@ class App extends Component {
 
   getBooks = () => {
     axios
-      .get(`/books`)
+      .get(`${API_ROOT}/books`)
       .then((response) => {
         console.log(response.data);
         this.setState({
