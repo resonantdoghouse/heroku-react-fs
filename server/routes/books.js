@@ -8,7 +8,7 @@ router.route('/').get((req, res) => {
       withRelated: [
         {
           authors: (qb) => {
-            qb.column('id', 'name'); // filter out what's being returned, e.g. not making emails public
+            qb.column('id', 'name', 'bio', 'age'); // filter out what's being returned, e.g. not making emails public
           },
         },
       ],
