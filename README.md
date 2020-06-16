@@ -29,7 +29,11 @@ A "fullstack" React/Express app intended to be run using Heroku.
 ## Setup Local
 
 - In the root folder run `npm run setup` which will run the command `npm install && npm run build` which will install all the required node_modules and export a build of the React app
-- After running the setup you should now be able to start the app by running `npm run develop`, which will start the express app with nodemon and open React using concurrently
+- After running the setup you should now be able to start the app by running `npm run develop`, which will start the express app with nodemon and open React using concurrently. You will likely see an error in terminal saying "Unhandled rejection Error: ER_BAD_DB_ERROR: Unknown database 'library_db'" as we haven't created a database yet.
+- Create a new database with MySQL Workbench, or if you prefer through command-line, or if you want to extend this project to manage your db with `knex` you can try [knex-db-manager](https://github.com/Vincit/knex-db-manager). The database name to create is `library_db` however you can change this by editing the file `knexfile.js` in the server folder. In fact you will likely need to edit this as your MySQL username and password may be different e.g. not `root` & `root`
+- Once you've created a new database and edited `/server/knexfile.js` you can now create tables and dummy data by running the following commands: `knex migrate:latest` and `knex seed:run`, alternatively you could add these to the scripts section of package.json
+- Finally run `npm run develop` and you should see your React app start with some Books and Users data, you can also try the server endpoints locally:
+  http://localhost:5000/api/books , http://localhost:5000/api/authors and http://localhost:5000/api/ however note that if you visit http://localhost:5000/ you will see the React app. This is to help to deploy to just 1 server, see the redirect at the bottom of /server/server.js for more info
 
 ## Development Scripts
 
