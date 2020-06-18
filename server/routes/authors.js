@@ -43,7 +43,7 @@ router.route('/').post((req, res) => {
  */
 router.route('/:id').put((req, res) => {
   const { name, email, bio } = req.body;
-  Author.where('id', 1)
+  Author.where('id', req.params.id)
     .fetch()
     .then((author) => {
       author.save({ name, email, bio }).then((results) => {
@@ -51,7 +51,11 @@ router.route('/:id').put((req, res) => {
       });
     })
     .catch((err) => {
-      res.json({ error: err });
+      if (err.message === 'EmptyResponse') {
+        res.json({ response: 'no authors with that id' });
+      } else {
+        res.json({ error: err });
+      }
     });
 });
 
