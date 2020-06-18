@@ -2,6 +2,9 @@ const express = require('express');
 const Author = require('../models/author');
 const router = express.Router();
 
+/**
+ * Get authors
+ */
 router.route('/').get((req, res) => {
   Author.where(req.query)
     .fetchAll()
@@ -16,6 +19,9 @@ router.route('/').get((req, res) => {
     });
 });
 
+/**
+ * Post author
+ */
 router.route('/').post((req, res) => {
   const { name, email, bio } = req.body;
   Author.forge({
@@ -26,6 +32,23 @@ router.route('/').post((req, res) => {
     .save()
     .then((results) => {
       res.json({ response: results });
+    })
+    .catch((err) => {
+      res.json({ error: err });
+    });
+});
+
+/**
+ * Update author
+ */
+router.route('/:id').put((req, res) => {
+  const { name, email, bio } = req.body;
+  Author.where('id', 1)
+    .fetch()
+    .then((author) => {
+      author.save({ name, email, bio }).then((results) => {
+        res.json({ response: results });
+      });
     })
     .catch((err) => {
       res.json({ error: err });
