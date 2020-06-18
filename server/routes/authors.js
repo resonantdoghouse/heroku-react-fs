@@ -59,4 +59,8 @@ router.route('/:id').put((req, res) => {
     });
 });
 
+/**
+ * TODO add delete author 👇
+ */
+
 module.exports = router;
